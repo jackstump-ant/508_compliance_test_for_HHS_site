@@ -1,65 +1,209 @@
-import Image from "next/image";
+import Link from 'next/link';
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className="grid-row grid-gap">
+      {/* Hero Section */}
+      <div className="grid-col-12 margin-bottom-5">
+        <div className="usa-hero padding-y-5" style={{ backgroundColor: '#005ea2' }}>
+          <div className="grid-row grid-gap flex-align-center">
+            <div className="grid-col-12 tablet:grid-col-8">
+              <h1 className="usa-hero__heading text-white font-heading-2xl">
+                Section 508 Compliance Review
+              </h1>
+              <p className="usa-hero__tagline text-white font-sans-lg margin-bottom-3">
+                AI-powered accessibility analysis for government documents.
+                Get instant feedback and clear guidance to make your documents
+                accessible to everyone.
+              </p>
+              <div className="display-flex flex-wrap gap-2">
+                <Link href="/upload" className="usa-button usa-button--big usa-button--secondary">
+                  Submit Document for Review
+                </Link>
+                <Link href="/dashboard" className="usa-button usa-button--big usa-button--outline usa-button--inverse">
+                  Reviewer Dashboard
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* How It Works */}
+      <div className="grid-col-12 margin-bottom-5">
+        <h2 className="font-heading-xl margin-bottom-3">How It Works</h2>
+        <div className="grid-row grid-gap">
+          <div className="grid-col-12 tablet:grid-col-4">
+            <div className="usa-card height-full">
+              <div className="usa-card__container">
+                <div className="usa-card__header">
+                  <span className="display-inline-block bg-primary text-white padding-1 radius-full font-heading-lg width-5 height-5 text-center margin-bottom-1">
+                    1
+                  </span>
+                  <h3 className="usa-card__heading">Upload Your Document</h3>
+                </div>
+                <div className="usa-card__body">
+                  <p>
+                    Submit PDF, Word, Excel, PowerPoint, HTML files, or images.
+                    Drag and drop or browse to select your file.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="grid-col-12 tablet:grid-col-4">
+            <div className="usa-card height-full">
+              <div className="usa-card__container">
+                <div className="usa-card__header">
+                  <span className="display-inline-block bg-primary text-white padding-1 radius-full font-heading-lg width-5 height-5 text-center margin-bottom-1">
+                    2
+                  </span>
+                  <h3 className="usa-card__heading">AI Analysis</h3>
+                </div>
+                <div className="usa-card__body">
+                  <p>
+                    Claude AI analyzes your document against WCAG 2.2 and
+                    Section 508 standards, identifying accessibility issues.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="grid-col-12 tablet:grid-col-4">
+            <div className="usa-card height-full">
+              <div className="usa-card__container">
+                <div className="usa-card__header">
+                  <span className="display-inline-block bg-primary text-white padding-1 radius-full font-heading-lg width-5 height-5 text-center margin-bottom-1">
+                    3
+                  </span>
+                  <h3 className="usa-card__heading">Get Guidance</h3>
+                </div>
+                <div className="usa-card__body">
+                  <p>
+                    Receive plain-language explanations of issues with
+                    step-by-step instructions on how to fix them.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Features */}
+      <div className="grid-col-12 margin-bottom-5">
+        <h2 className="font-heading-xl margin-bottom-3">Features</h2>
+        <div className="grid-row grid-gap">
+          <div className="grid-col-12 tablet:grid-col-6">
+            <ul className="usa-list">
+              <li>
+                <strong>Policy Evaluation</strong> - Automatically determines if
+                your document requires 508 review
+              </li>
+              <li>
+                <strong>Comprehensive Analysis</strong> - Checks images, tables,
+                headings, links, color contrast, and more
+              </li>
+              <li>
+                <strong>HTML/Web Support</strong> - Analyzes web content for
+                semantic HTML, ARIA, keyboard accessibility
+              </li>
+              <li>
+                <strong>Severity Ratings</strong> - Issues classified as
+                Critical, Major, or Minor
+              </li>
+            </ul>
+          </div>
+          <div className="grid-col-12 tablet:grid-col-6">
+            <ul className="usa-list">
+              <li>
+                <strong>Plain Language Guidance</strong> - Clear, actionable
+                instructions anyone can follow
+              </li>
+              <li>
+                <strong>Regulatory Citations</strong> - WCAG 2.2 criteria and
+                Section 508 references for each issue
+              </li>
+              <li>
+                <strong>Human Review Workflow</strong> - Reviewers can accept or
+                override AI recommendations
+              </li>
+              <li>
+                <strong>Audit Trail</strong> - Complete record of submissions
+                and decisions
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      {/* What We Check */}
+      <div className="grid-col-12 margin-bottom-5">
+        <h2 className="font-heading-xl margin-bottom-3">What We Check</h2>
+        <div className="grid-row grid-gap">
+          <div className="grid-col-12 tablet:grid-col-4">
+            <div className="padding-2 border-1px border-base-light radius-md height-full">
+              <h3 className="font-heading-md margin-top-0">Images & Graphics</h3>
+              <p className="margin-bottom-0">
+                Alt text presence and quality, decorative image handling
+              </p>
+            </div>
+          </div>
+          <div className="grid-col-12 tablet:grid-col-4">
+            <div className="padding-2 border-1px border-base-light radius-md height-full">
+              <h3 className="font-heading-md margin-top-0">Document Structure</h3>
+              <p className="margin-bottom-0">
+                Heading hierarchy, reading order, list formatting
+              </p>
+            </div>
+          </div>
+          <div className="grid-col-12 tablet:grid-col-4">
+            <div className="padding-2 border-1px border-base-light radius-md height-full">
+              <h3 className="font-heading-md margin-top-0">Tables</h3>
+              <p className="margin-bottom-0">
+                Header cells, scope attributes, logical structure
+              </p>
+            </div>
+          </div>
+          <div className="grid-col-12 tablet:grid-col-4">
+            <div className="padding-2 border-1px border-base-light radius-md height-full">
+              <h3 className="font-heading-md margin-top-0">Links</h3>
+              <p className="margin-bottom-0">
+                Descriptive link text, distinguishable from body text
+              </p>
+            </div>
+          </div>
+          <div className="grid-col-12 tablet:grid-col-4">
+            <div className="padding-2 border-1px border-base-light radius-md height-full">
+              <h3 className="font-heading-md margin-top-0">Color & Contrast</h3>
+              <p className="margin-bottom-0">
+                Sufficient contrast ratios, information not conveyed by color alone
+              </p>
+            </div>
+          </div>
+          <div className="grid-col-12 tablet:grid-col-4">
+            <div className="padding-2 border-1px border-base-light radius-md height-full">
+              <h3 className="font-heading-md margin-top-0">Forms & Interactivity</h3>
+              <p className="margin-bottom-0">
+                Labels, error messages, keyboard accessibility
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* CTA */}
+      <div className="grid-col-12">
+        <div className="bg-base-lightest padding-4 radius-md text-center">
+          <h2 className="font-heading-xl margin-top-0">Ready to Get Started?</h2>
+          <p className="font-sans-lg margin-bottom-3">
+            Submit your document now and get instant accessibility feedback.
           </p>
+          <Link href="/upload" className="usa-button usa-button--big">
+            Submit Document for Review
+          </Link>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+      </div>
     </div>
   );
 }

@@ -1,26 +1,190 @@
 @import "tailwindcss";
+@import "@uswds/uswds/css/uswds.css";
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --foreground: #1b1b1b;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* USWDS overrides for better integration */
+.usa-banner {
+  background-color: #f0f0f0;
+}
+
+.usa-banner__content {
+  max-width: 1200px;
+}
+
+/* Custom utility classes */
+.container-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Status badge colors */
+.status-pending {
+  background-color: #ffbe2e;
+  color: #1b1b1b;
+}
+
+.status-analyzing {
+  background-color: #00bde3;
+  color: #1b1b1b;
+}
+
+.status-completed {
+  background-color: #00a91c;
+  color: #ffffff;
+}
+
+.status-failed {
+  background-color: #d54309;
+  color: #ffffff;
+}
+
+/* Severity badge colors */
+.severity-critical {
+  background-color: #b50909;
+  color: #ffffff;
+}
+
+.severity-major {
+  background-color: #e5a000;
+  color: #1b1b1b;
+}
+
+.severity-minor {
+  background-color: #538200;
+  color: #ffffff;
+}
+
+/* Card styles */
+.finding-card {
+  border: 1px solid #dfe1e2;
+  border-radius: 0.25rem;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  background: #ffffff;
+}
+
+.finding-card.critical {
+  border-left: 4px solid #b50909;
+}
+
+.finding-card.major {
+  border-left: 4px solid #e5a000;
+}
+
+.finding-card.minor {
+  border-left: 4px solid #538200;
+}
+
+/* File upload drop zone */
+.drop-zone {
+  border: 2px dashed #71767a;
+  border-radius: 0.5rem;
+  padding: 3rem;
+  text-align: center;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.drop-zone:hover,
+.drop-zone.drag-over {
+  border-color: #005ea2;
+  background-color: #e7f6f8;
+}
+
+.drop-zone.has-file {
+  border-color: #00a91c;
+  background-color: #ecf3ec;
+}
+
+/* Progress indicator */
+.progress-step {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.progress-step-number {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  background-color: #dfe1e2;
+  color: #71767a;
+}
+
+.progress-step.active .progress-step-number {
+  background-color: #005ea2;
+  color: #ffffff;
+}
+
+.progress-step.completed .progress-step-number {
+  background-color: #00a91c;
+  color: #ffffff;
+}
+
+/* Dashboard table styles */
+.review-queue-table {
+  width: 100%;
+}
+
+.review-queue-table th {
+  text-align: left;
+  padding: 1rem;
+  background-color: #f0f0f0;
+  border-bottom: 2px solid #dfe1e2;
+}
+
+.review-queue-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #dfe1e2;
+}
+
+.review-queue-table tr:hover {
+  background-color: #f0f0f0;
+}
+
+/* Confidence meter */
+.confidence-meter {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.confidence-bar {
+  width: 100px;
+  height: 8px;
+  background-color: #dfe1e2;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.confidence-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.confidence-fill.high {
+  background-color: #00a91c;
+}
+
+.confidence-fill.medium {
+  background-color: #ffbe2e;
+}
+
+.confidence-fill.low {
+  background-color: #d54309;
 }
