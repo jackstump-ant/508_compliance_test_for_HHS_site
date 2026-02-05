@@ -5,22 +5,22 @@ export default function HomePage() {
     <div className="grid-row grid-gap">
       {/* Hero Section */}
       <div className="grid-col-12 margin-bottom-5">
-        <div className="usa-hero padding-y-5" style={{ backgroundColor: '#005ea2' }}>
-          <div className="grid-row grid-gap flex-align-center">
-            <div className="grid-col-12 tablet:grid-col-8">
+        <div className="usa-hero padding-y-5" style={{ backgroundColor: '#005ea2', backgroundImage: 'none' }}>
+          <div className="grid-container">
+            <div style={{ paddingLeft: '2rem' }}>
               <h1 className="usa-hero__heading text-white font-heading-2xl">
                 Section 508 Compliance Review
               </h1>
-              <p className="usa-hero__tagline text-white font-sans-lg margin-bottom-3">
+              <p className="text-white font-sans-lg margin-bottom-3" style={{ maxWidth: '36em' }}>
                 AI-powered accessibility analysis for government documents.
                 Get instant feedback and clear guidance to make your documents
                 accessible to everyone.
               </p>
-              <div className="display-flex flex-wrap gap-2">
-                <Link href="/upload" className="usa-button usa-button--big usa-button--secondary">
+              <div className="display-flex flex-row flex-align-center" style={{ gap: '1rem' }}>
+                <Link href="/upload" className="usa-button usa-button--big usa-button--secondary" style={{ whiteSpace: 'nowrap' }}>
                   Submit Document for Review
                 </Link>
-                <Link href="/dashboard" className="usa-button usa-button--big usa-button--outline usa-button--inverse">
+                <Link href="/dashboard" className="usa-button usa-button--big usa-button--outline usa-button--inverse" style={{ whiteSpace: 'nowrap' }}>
                   Reviewer Dashboard
                 </Link>
               </div>

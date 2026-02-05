@@ -45,8 +45,8 @@ export default function GovernmentLayout({ children }: GovernmentLayoutProps) {
 
   return (
     <>
-      {/* Official US Government Banner */}
-      <GovBanner />
+      {/* Official US Government Banner - hidden for cleaner look */}
+      {/* <GovBanner /> */}
 
       {/* Site Header */}
       <Header basic={true}>
@@ -74,55 +74,7 @@ export default function GovernmentLayout({ children }: GovernmentLayoutProps) {
         </div>
       </main>
 
-      {/* Footer/Identifier */}
-      <Identifier>
-        <IdentifierMasthead aria-label="Agency identifier">
-          <IdentifierLogos>
-            <IdentifierLogo href="#">
-              <span className="usa-identifier__logo-text">
-                Section 508 Compliance Office
-              </span>
-            </IdentifierLogo>
-          </IdentifierLogos>
-          <IdentifierIdentity domain="compliance.agency.gov">
-            An official website of the{' '}
-            <Link href="#">U.S. General Services Administration</Link>
-          </IdentifierIdentity>
-        </IdentifierMasthead>
-        <IdentifierLinks navProps={{ 'aria-label': 'Important links' }}>
-          <IdentifierLinkItem>
-            <IdentifierLink href="#">About GSA</IdentifierLink>
-          </IdentifierLinkItem>
-          <IdentifierLinkItem>
-            <IdentifierLink href="#">Accessibility support</IdentifierLink>
-          </IdentifierLinkItem>
-          <IdentifierLinkItem>
-            <IdentifierLink href="#">FOIA requests</IdentifierLink>
-          </IdentifierLinkItem>
-          <IdentifierLinkItem>
-            <IdentifierLink href="#">No FEAR Act data</IdentifierLink>
-          </IdentifierLinkItem>
-          <IdentifierLinkItem>
-            <IdentifierLink href="#">
-              Office of the Inspector General
-            </IdentifierLink>
-          </IdentifierLinkItem>
-          <IdentifierLinkItem>
-            <IdentifierLink href="#">Performance reports</IdentifierLink>
-          </IdentifierLinkItem>
-          <IdentifierLinkItem>
-            <IdentifierLink href="#">Privacy policy</IdentifierLink>
-          </IdentifierLinkItem>
-        </IdentifierLinks>
-        <IdentifierGov aria-label="U.S. government information and services">
-          <div className="usa-identifier__usagov-description">
-            Looking for U.S. government information and services?
-          </div>
-          <Link href="https://www.usa.gov/" className="usa-link">
-            Visit USA.gov
-          </Link>
-        </IdentifierGov>
-      </Identifier>
+      {/* Footer/Identifier - removed for cleaner look */}
     </>
   );
 }
