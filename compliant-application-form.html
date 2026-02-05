@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FOIA Request Submission - Department of Records</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, sans-serif; background: #f0f0f0; color: #1b1b1b; line-height: 1.6; }
+    .skip-link { position: absolute; top: -40px; left: 0; background: #1b3a5c; color: white; padding: 8px 16px; z-index: 1000; text-decoration: none; }
+    .skip-link:focus { top: 0; }
+    .usa-banner { background: #f0f0f0; padding: 4px 0; font-size: 13px; border-bottom: 1px solid #ddd; }
+    .usa-banner__inner { max-width: 800px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 8px; }
+    header { background: #1b3a5c; color: white; border-bottom: 4px solid #b50d0d; }
+    .header-inner { max-width: 800px; margin: 0 auto; padding: 24px; }
+    header h1 { font-size: 1.5rem; font-weight: 700; }
+    header p { opacity: 0.8; margin-top: 4px; font-size: 15px; }
+    .breadcrumb { background: white; border-bottom: 1px solid #ddd; }
+    .breadcrumb-inner { max-width: 800px; margin: 0 auto; padding: 12px 24px; font-size: 14px; }
+    .breadcrumb a { color: #005ea2; text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { color: #666; }
+    main { max-width: 800px; margin: 0 auto; padding: 32px 24px; }
+    .intro-box { background: #d9e8f6; border-left: 4px solid #005ea2; padding: 20px 24px; margin-bottom: 32px; border-radius: 0 4px 4px 0; }
+    .intro-box h2 { font-size: 1.1rem; color: #1b3a5c; margin-bottom: 8px; }
+    .intro-box p { font-size: 15px; color: #333; }
+    .intro-box ul { margin-top: 12px; margin-left: 20px; font-size: 14px; }
+    .intro-box li { margin-bottom: 6px; }
+    .form-card { background: white; border: 1px solid #ddd; border-radius: 4px; padding: 32px; }
+    .form-section { margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid #eee; }
+    .form-section:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+    .form-section h3 { font-size: 1.1rem; color: #1b3a5c; margin-bottom: 20px; padding-bottom: 8px; border-bottom: 2px solid #005ea2; display: inline-block; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; font-weight: 600; margin-bottom: 6px; color: #1b1b1b; }
+    .form-group .required { color: #b50d0d; }
+    .form-group .hint { font-size: 13px; color: #666; margin-bottom: 6px; }
+    .form-group input[type="text"], .form-group input[type="email"], .form-group input[type="tel"], .form-group textarea, .form-group select { width: 100%; padding: 10px 12px; border: 1px solid #adadad; border-radius: 4px; font-size: 16px; font-family: inherit; }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: 2px solid #005ea2; outline-offset: 1px; border-color: #005ea2; }
+    .form-group textarea { min-height: 120px; resize: vertical; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .checkbox-group { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
+    .checkbox-group input[type="checkbox"] { width: 20px; height: 20px; margin-top: 2px; flex-shrink: 0; }
+    .checkbox-group label { font-weight: normal; margin-bottom: 0; }
+    .radio-group { margin-bottom: 12px; }
+    .radio-option { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .radio-option input[type="radio"] { width: 20px; height: 20px; flex-shrink: 0; }
+    .radio-option label { font-weight: normal; margin-bottom: 0; }
+    fieldset { border: 1px solid #ddd; border-radius: 4px; padding: 20px; margin-bottom: 20px; }
+    legend { font-weight: 600; padding: 0 8px; color: #1b1b1b; }
+    .btn { display: inline-block; padding: 14px 28px; border-radius: 4px; font-weight: 700; font-size: 16px; text-decoration: none; border: none; cursor: pointer; font-family: inherit; }
+    .btn-primary { background: #005ea2; color: white; }
+    .btn-primary:hover { background: #1b3a5c; }
+    .btn-primary:focus { outline: 2px solid #ffbe2e; outline-offset: 2px; }
+    .btn-secondary { background: white; color: #005ea2; border: 2px solid #005ea2; }
+    .btn-secondary:hover { background: #d9e8f6; }
+    .form-actions { display: flex; gap: 16px; margin-top: 32px; }
+    .privacy-notice { background: #f7f7f7; padding: 16px 20px; border-radius: 4px; margin-top: 24px; font-size: 13px; color: #454545; }
+    .privacy-notice h4 { font-size: 14px; margin-bottom: 8px; color: #1b1b1b; }
+    footer { background: #1b1b1b; color: #adadad; margin-top: 48px; padding: 32px 24px; }
+    .footer-inner { max-width: 800px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 24px; font-size: 14px; }
+    footer a { color: #d9e8f6; }
+    .error-message { color: #b50d0d; font-size: 14px; margin-top: 6px; display: flex; align-items: center; gap: 6px; }
+    .error-message::before { content: "!"; display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; background: #b50d0d; color: white; border-radius: 50%; font-size: 12px; font-weight: bold; }
+    .char-count { font-size: 13px; color: #666; text-align: right; margin-top: 4px; }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="usa-banner">
+    <div class="usa-banner__inner">
+      <span role="img" aria-label="U.S. flag" style="width:16px; height:12px; background:#1b3a5c; display:inline-block;"></span>
+      <span>An official website of the United States government</span>
+    </div>
+  </div>
+
+  <header role="banner">
+    <div class="header-inner">
+      <h1>Department of Records</h1>
+      <p>Freedom of Information Act (FOIA) Request Portal</p>
+    </div>
+  </header>
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="breadcrumb-inner">
+      <a href="#">Home</a>
+      <span aria-hidden="true"> / </span>
+      <a href="#">FOIA</a>
+      <span aria-hidden="true"> / </span>
+      <span aria-current="page">Submit Request</span>
+    </div>
+  </nav>
+
+  <main id="main-content" role="main">
+    <div class="intro-box">
+      <h2>Before You Begin</h2>
+      <p>Please gather the following information to complete your FOIA request:</p>
+      <ul>
+        <li>Specific description of records you are seeking</li>
+        <li>Approximate date range of the records</li>
+        <li>Any relevant names, locations, or identifying information</li>
+        <li>Your contact information for correspondence</li>
+      </ul>
+    </div>
+
+    <form class="form-card" action="/submit-foia" method="POST" aria-describedby="form-instructions">
+      <p id="form-instructions" class="hint" style="margin-bottom: 24px;">Fields marked with <span class="required" aria-hidden="true">*</span> are required. <span class="sr-only">Required fields are indicated.</span></p>
+
+      <div class="form-section">
+        <h3>Contact Information</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="first-name">First Name <span class="required" aria-hidden="true">*</span></label>
+            <input type="text" id="first-name" name="first-name" required aria-required="true" autocomplete="given-name">
+          </div>
+          <div class="form-group">
+            <label for="last-name">Last Name <span class="required" aria-hidden="true">*</span></label>
+            <input type="text" id="last-name" name="last-name" required aria-required="true" autocomplete="family-name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address <span class="required" aria-hidden="true">*</span></label>
+          <p class="hint" id="email-hint">We will send status updates and responses to this email.</p>
+          <input type="email" id="email" name="email" required aria-required="true" aria-describedby="email-hint" autocomplete="email">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel">
+          </div>
+          <div class="form-group">
+            <label for="organization">Organization (if applicable)</label>
+            <input type="text" id="organization" name="organization" autocomplete="organization">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h3>Request Details</h3>
+        <div class="form-group">
+          <label for="records-description">Description of Records Requested <span class="required" aria-hidden="true">*</span></label>
+          <p class="hint" id="records-hint">Be as specific as possible. Include names, dates, locations, and any other identifying information.</p>
+          <textarea id="records-description" name="records-description" required aria-required="true" aria-describedby="records-hint" maxlength="5000"></textarea>
+          <p class="char-count" aria-live="polite"><span id="char-remaining">5000</span> characters remaining</p>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="date-start">Date Range Start</label>
+            <input type="text" id="date-start" name="date-start" placeholder="MM/YYYY">
+          </div>
+          <div class="form-group">
+            <label for="date-end">Date Range End</label>
+            <input type="text" id="date-end" name="date-end" placeholder="MM/YYYY">
+          </div>
+        </div>
+        <fieldset>
+          <legend>Preferred Response Format <span class="required" aria-hidden="true">*</span></legend>
+          <div class="radio-option">
+            <input type="radio" id="format-electronic" name="format" value="electronic" required>
+            <label for="format-electronic">Electronic (email or download)</label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" id="format-paper" name="format" value="paper">
+            <label for="format-paper">Paper copies (mailed)</label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" id="format-both" name="format" value="both">
+            <label for="format-both">Both electronic and paper</label>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="form-section">
+        <h3>Fee Agreement</h3>
+        <p style="margin-bottom: 16px;">FOIA requests may incur processing fees for search, review, and duplication.</p>
+        <fieldset>
+          <legend>Fee Category <span class="required" aria-hidden="true">*</span></legend>
+          <div class="radio-option">
+            <input type="radio" id="fee-commercial" name="fee-category" value="commercial" required>
+            <label for="fee-commercial">Commercial use</label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" id="fee-educational" name="fee-category" value="educational">
+            <label for="fee-educational">Educational or scientific institution</label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" id="fee-news" name="fee-category" value="news">
+            <label for="fee-news">News media</label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" id="fee-other" name="fee-category" value="other">
+            <label for="fee-other">All other requesters</label>
+          </div>
+        </fieldset>
+        <div class="form-group">
+          <label for="fee-limit">Maximum Fee You Are Willing to Pay</label>
+          <p class="hint" id="fee-hint">Enter a dollar amount. We will contact you if fees exceed this amount.</p>
+          <input type="text" id="fee-limit" name="fee-limit" aria-describedby="fee-hint" placeholder="$25.00" style="max-width: 200px;">
+        </div>
+      </div>
+
+      <div class="checkbox-group">
+        <input type="checkbox" id="certify" name="certify" required aria-required="true">
+        <label for="certify">I certify that the information provided is true and accurate to the best of my knowledge. <span class="required" aria-hidden="true">*</span></label>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Submit FOIA Request</button>
+        <button type="button" class="btn btn-secondary">Save Draft</button>
+      </div>
+
+      <div class="privacy-notice">
+        <h4>Privacy Act Statement</h4>
+        <p>The information collected on this form is used solely for processing your FOIA request. Your personal information is protected under the Privacy Act of 1974 and will not be shared except as required by law. For more information, see our <a href="#">Privacy Policy</a>.</p>
+      </div>
+    </form>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="footer-inner">
+      <div>
+        <p><strong>Department of Records</strong></p>
+        <p>FOIA Service Center: 1-800-555-FOIA</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Accessibility Statement</a> | <a href="#">Contact Us</a></p>
+      </div>
+      <div>
+        <p>Last updated: October 2024</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

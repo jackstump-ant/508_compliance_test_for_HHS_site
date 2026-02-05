@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; color: #333; }
+    .navbar { position: fixed; top: 0; left: 0; right: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); z-index: 100; padding: 16px 48px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    .navbar img { height: 32px; }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a { color: #666; text-decoration: none; font-size: 14px; font-weight: 500; }
+    .nav-links a:hover { color: #7c3aed; }
+    .btn-primary { background: linear-gradient(135deg, #7c3aed, #a855f7); color: white; padding: 10px 24px; border-radius: 24px; font-weight: 600; font-size: 14px; text-decoration: none; }
+    .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; background: linear-gradient(180deg, #faf5ff 0%, #fff 100%); padding: 120px 24px 80px; }
+    .hero-content { max-width: 800px; }
+    .badge { display: inline-block; background: #f3e8ff; color: #7c3aed; padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 24px; }
+    .hero h2 { font-size: 4rem; font-weight: 800; line-height: 1.1; margin-bottom: 24px; background: linear-gradient(135deg, #1e1b4b, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero p { font-size: 1.25rem; color: #666; max-width: 600px; margin: 0 auto 40px; line-height: 1.7; }
+    .cta-buttons { display: flex; gap: 16px; justify-content: center; }
+    .btn-large { padding: 16px 32px; border-radius: 12px; font-weight: 600; font-size: 16px; text-decoration: none; }
+    .btn-large.primary { background: #7c3aed; color: white; }
+    .btn-large.secondary { background: white; color: #333; border: 1px solid #ddd; }
+    .hero-image { margin-top: 60px; }
+    .hero-image img { max-width: 100%; border-radius: 16px; box-shadow: 0 25px 50px rgba(0,0,0,0.15); }
+    .logos { padding: 80px 48px; background: #fafafa; text-align: center; }
+    .logos p { color: #999; font-size: 13px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 32px; }
+    .logo-grid { display: flex; justify-content: center; align-items: center; gap: 48px; flex-wrap: wrap; opacity: 0.6; }
+    .logo-grid img { height: 28px; }
+    .features { padding: 120px 48px; max-width: 1200px; margin: 0 auto; }
+    .features-header { text-align: center; margin-bottom: 64px; }
+    .features-header h4 { color: #7c3aed; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; }
+    .features-header h3 { font-size: 2.5rem; font-weight: 700; }
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+    .feature-card { padding: 32px; border-radius: 16px; background: #faf5ff; }
+    .feature-icon { width: 48px; height: 48px; background: #7c3aed; border-radius: 12px; margin-bottom: 20px; }
+    .feature-card h5 { font-size: 1.25rem; margin-bottom: 12px; }
+    .feature-card p { color: #666; line-height: 1.7; }
+    .testimonials { background: #1e1b4b; color: white; padding: 120px 48px; }
+    .testimonial-content { max-width: 800px; margin: 0 auto; text-align: center; }
+    .testimonial-content img { width: 64px; height: 64px; border-radius: 50%; margin-bottom: 32px; }
+    .testimonial-content blockquote { font-size: 1.75rem; line-height: 1.6; margin-bottom: 32px; font-weight: 500; }
+    .testimonial-content cite { color: #a5b4fc; font-style: normal; }
+    .cta-section { padding: 120px 48px; text-align: center; background: linear-gradient(180deg, #fff 0%, #faf5ff 100%); }
+    .cta-section h3 { font-size: 2.5rem; margin-bottom: 16px; }
+    .cta-section p { color: #666; margin-bottom: 32px; }
+    footer { background: #0f0f1a; color: #666; padding: 64px 48px 32px; }
+    .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr repeat(3, 1fr); gap: 48px; margin-bottom: 48px; }
+    .footer-brand img { height: 32px; margin-bottom: 16px; }
+    .footer-brand p { font-size: 14px; line-height: 1.7; }
+    .footer-col h6 { color: white; font-size: 14px; margin-bottom: 20px; }
+    .footer-col a { display: block; color: #666; text-decoration: none; font-size: 14px; margin-bottom: 12px; }
+    .footer-col a:hover { color: #a5b4fc; }
+    .footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 32px; border-top: 1px solid #222; display: flex; justify-content: space-between; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <img src="logo.svg">
+    <div class="nav-links">
+      <a>Features</a>
+      <a>Pricing</a>
+      <a>About</a>
+      <a>Blog</a>
+    </div>
+    <a class="btn-primary">Get Started</a>
+  </div>
+
+  <div class="hero">
+    <div class="hero-content">
+      <div class="badge">New: AI-Powered Analytics</div>
+      <h2>Build better products with data-driven insights</h2>
+      <p>The all-in-one platform for product teams to understand user behavior, track metrics, and make smarter decisions faster.</p>
+      <div class="cta-buttons">
+        <a class="btn-large primary">Start Free Trial</a>
+        <a class="btn-large secondary">Watch Demo</a>
+      </div>
+      <div class="hero-image">
+        <img src="dashboard-preview.png">
+      </div>
+    </div>
+  </div>
+
+  <div class="logos">
+    <p>Trusted by 10,000+ companies worldwide</p>
+    <div class="logo-grid">
+      <img src="logo-stripe.svg">
+      <img src="logo-spotify.svg">
+      <img src="logo-slack.svg">
+      <img src="logo-shopify.svg">
+      <img src="logo-notion.svg">
+    </div>
+  </div>
+
+  <div class="features">
+    <div class="features-header">
+      <h4>Features</h4>
+      <h3>Everything you need to grow</h3>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon"></div>
+        <h5>Real-time Analytics</h5>
+        <p>Track user behavior and engagement metrics in real-time with our powerful analytics engine.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"></div>
+        <h5>User Segmentation</h5>
+        <p>Create custom segments based on behavior, demographics, and engagement patterns.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"></div>
+        <h5>A/B Testing</h5>
+        <p>Run experiments and measure impact with our built-in A/B testing framework.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"></div>
+        <h5>Funnel Analysis</h5>
+        <p>Visualize user journeys and identify drop-off points in your conversion funnel.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"></div>
+        <h5>Team Collaboration</h5>
+        <p>Share insights, create dashboards, and collaborate with your entire team.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"></div>
+        <h5>API & Integrations</h5>
+        <p>Connect with your favorite tools through our REST API and native integrations.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="testimonials">
+    <div class="testimonial-content">
+      <img src="sarah-ceo.jpg">
+      <blockquote>"This platform transformed how we understand our users. We've increased retention by 40% since switching."</blockquote>
+      <cite>Sarah Chen, CEO at TechStartup</cite>
+    </div>
+  </div>
+
+  <div class="cta-section">
+    <h3>Ready to get started?</h3>
+    <p>Join thousands of companies already using our platform.</p>
+    <a class="btn-large primary">Start Your Free Trial</a>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="logo-white.svg">
+        <p>The modern analytics platform for product teams.</p>
+      </div>
+      <div class="footer-col">
+        <h6>Product</h6>
+        <a>Features</a>
+        <a>Pricing</a>
+        <a>Integrations</a>
+        <a>Changelog</a>
+      </div>
+      <div class="footer-col">
+        <h6>Company</h6>
+        <a>About</a>
+        <a>Blog</a>
+        <a>Careers</a>
+        <a>Contact</a>
+      </div>
+      <div class="footer-col">
+        <h6>Legal</h6>
+        <a>Privacy</a>
+        <a>Terms</a>
+        <a>Security</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>2024 Analytics Inc. All rights reserved.</span>
+      <div>
+        <img src="twitter.svg" style="width:20px; margin-left:16px;">
+        <img src="linkedin.svg" style="width:20px; margin-left:16px;">
+        <img src="github.svg" style="width:20px; margin-left:16px;">
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
