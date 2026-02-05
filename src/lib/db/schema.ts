@@ -54,8 +54,7 @@ export interface Guidance {
   whatIsWrong: string;
   whyItMatters: string;
   howToFix: string[];
-  wcagCitation: string;
-  section508Reference: string;
+  wcagCriterion: string;
 }
 
 export interface PolicyResult {

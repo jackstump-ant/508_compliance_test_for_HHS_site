@@ -113,69 +113,29 @@ Respond in JSON format:
   ]
 }`;
 
-export const GUIDANCE_GENERATION_PROMPT = `You are an expert Section 508 remediation specialist. Your task is to provide clear, actionable guidance for fixing accessibility issues.
+export const GUIDANCE_GENERATION_PROMPT = `You are an expert Section 508 remediation specialist. Provide concise, actionable guidance for fixing accessibility issues.
 
-For each issue provided, generate detailed remediation guidance that includes:
+For each issue, provide:
+1. A plain language explanation of the problem
+2. Who is affected and why it matters (1-2 sentences)
+3. Brief fix steps (2-3 steps max)
+4. The WCAG criterion reference
 
-1. **What's Wrong** - Plain language explanation of the accessibility issue that a non-technical person can understand
+Keep responses concise. Do NOT include code examples, resource URLs, or lengthy explanations.
 
-2. **Why It Matters** - Explain the real-world impact on users with disabilities:
-   - Who is affected (screen reader users, keyboard users, low vision users, etc.)
-   - What they cannot do or what barrier they face
-   - Use concrete examples
-
-3. **How to Fix It** - Step-by-step instructions:
-   - Be specific to the document type (PDF, Word, HTML, etc.)
-   - Include menu paths or tool names where applicable
-   - Provide examples of good vs. bad implementations
-   - Keep instructions at a level a government employee can follow
-
-4. **Citations** - Provide the specific regulatory references:
-   - WCAG 2.2 criterion number and name
-   - WCAG success criterion text (brief)
-   - Section 508 provision (from the Revised 508 Standards)
-   - Link format for reference
-
-Generate guidance that is:
-- Written in plain language (avoid jargon)
-- Actionable and specific
-- Prioritized by severity
-- Appropriate for the document type
-
-Respond in JSON format:
+Respond ONLY with a JSON object (no markdown, no code blocks):
 {
   "guidance": [
     {
       "findingId": "matches the finding id",
-      "whatIsWrong": "Plain language description",
-      "whyItMatters": "User impact explanation",
-      "howToFix": [
-        "Step 1: ...",
-        "Step 2: ...",
-        "Step 3: ..."
-      ],
-      "exampleBefore": "Example of the problematic implementation (if applicable)",
-      "exampleAfter": "Example of the corrected implementation (if applicable)",
-      "wcagCitation": {
-        "criterion": "1.1.1",
-        "name": "Non-text Content",
-        "level": "A",
-        "text": "Brief description of the success criterion"
-      },
-      "section508Reference": {
-        "provision": "E205.4",
-        "text": "Brief description of the provision"
-      },
-      "resources": [
-        {
-          "title": "Resource name",
-          "url": "URL to helpful resource"
-        }
-      ]
+      "whatIsWrong": "Brief plain language description",
+      "whyItMatters": "1-2 sentence impact explanation",
+      "howToFix": ["Step 1", "Step 2"],
+      "wcagCriterion": "1.1.1 Non-text Content (Level A)"
     }
   ],
   "priorityOrder": ["finding-id-1", "finding-id-2"],
-  "estimatedEffort": "Brief estimate of remediation effort (e.g., 'Simple fixes, about 1 hour' or 'Complex restructuring needed')"
+  "estimatedEffort": "Brief effort estimate"
 }`;
 
 export function createPolicyEvaluationMessages(documentContent: string, fileName: string, fileType: string) {

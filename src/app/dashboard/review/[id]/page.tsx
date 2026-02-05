@@ -24,22 +24,7 @@ interface Guidance {
   whatIsWrong: string;
   whyItMatters: string;
   howToFix: string[];
-  exampleBefore?: string;
-  exampleAfter?: string;
-  wcagCitation?: {
-    criterion: string;
-    name: string;
-    level: string;
-    text: string;
-  };
-  section508Reference?: {
-    provision: string;
-    text: string;
-  };
-  resources?: {
-    title: string;
-    url: string;
-  }[];
+  wcagCriterion?: string;
 }
 
 interface ComplianceResult {

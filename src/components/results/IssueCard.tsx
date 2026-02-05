@@ -20,22 +20,7 @@ interface Guidance {
   whatIsWrong: string;
   whyItMatters: string;
   howToFix: string[];
-  exampleBefore?: string;
-  exampleAfter?: string;
-  wcagCitation?: {
-    criterion: string;
-    name: string;
-    level: string;
-    text: string;
-  };
-  section508Reference?: {
-    provision: string;
-    text: string;
-  };
-  resources?: {
-    title: string;
-    url: string;
-  }[];
+  wcagCriterion?: string;
 }
 
 interface IssueCardProps {
@@ -165,86 +150,16 @@ export default function IssueCard({ finding, guidance, index }: IssueCardProps) 
                     </ol>
                   </div>
 
-                  {/* Examples */}
-                  {(guidance.exampleBefore || guidance.exampleAfter) && (
-                    <div className="margin-bottom-2">
-                      <h4 className="margin-top-0 margin-bottom-1">Examples</h4>
-                      <div className="grid-row grid-gap">
-                        {guidance.exampleBefore && (
-                          <div className="grid-col-12 tablet:grid-col-6">
-                            <div className="padding-1 bg-error-lighter border-1px border-error-light radius-md">
-                              <p className="margin-0 font-sans-xs text-bold text-error-dark">Before (Incorrect):</p>
-                              <code className="font-mono-xs">{guidance.exampleBefore}</code>
-                            </div>
-                          </div>
-                        )}
-                        {guidance.exampleAfter && (
-                          <div className="grid-col-12 tablet:grid-col-6">
-                            <div className="padding-1 bg-success-lighter border-1px border-success-light radius-md">
-                              <p className="margin-0 font-sans-xs text-bold text-success-dark">After (Correct):</p>
-                              <code className="font-mono-xs">{guidance.exampleAfter}</code>
-                            </div>
-                          </div>
-                        )}
-                      </div>
+
+                  {/* WCAG Reference */}
+                  {guidance.wcagCriterion && (
+                    <div className="padding-top-2 border-top-1px border-base-light">
+                      <p className="margin-top-0 margin-bottom-0 font-sans-xs">
+                        <strong>WCAG Reference:</strong> {guidance.wcagCriterion}
+                      </p>
                     </div>
                   )}
 
-                  {/* Citations */}
-                  <div className="padding-top-2 border-top-1px border-base-light">
-                    <h4 className="margin-top-0 margin-bottom-1">Regulatory References</h4>
-                    <div className="grid-row grid-gap">
-                      {guidance.wcagCitation && (
-                        <div className="grid-col-12 tablet:grid-col-6">
-                          <p className="margin-top-0 margin-bottom-05">
-                            <strong>WCAG 2.2</strong>
-                          </p>
-                          <p className="margin-top-0 font-sans-xs">
-                            <span className="text-bold">{guidance.wcagCitation.criterion}</span>
-                            {' - '}{guidance.wcagCitation.name}
-                            {' '}(Level {guidance.wcagCitation.level})
-                          </p>
-                          <p className="margin-top-0 font-sans-xs text-base-dark">
-                            {guidance.wcagCitation.text}
-                          </p>
-                        </div>
-                      )}
-                      {guidance.section508Reference && (
-                        <div className="grid-col-12 tablet:grid-col-6">
-                          <p className="margin-top-0 margin-bottom-05">
-                            <strong>Section 508</strong>
-                          </p>
-                          <p className="margin-top-0 font-sans-xs">
-                            <span className="text-bold">{guidance.section508Reference.provision}</span>
-                          </p>
-                          <p className="margin-top-0 font-sans-xs text-base-dark">
-                            {guidance.section508Reference.text}
-                          </p>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Resources */}
-                  {guidance.resources && guidance.resources.length > 0 && (
-                    <div className="padding-top-2 border-top-1px border-base-light margin-top-2">
-                      <h4 className="margin-top-0 margin-bottom-1">Helpful Resources</h4>
-                      <ul className="usa-list margin-top-0">
-                        {guidance.resources.map((resource, i) => (
-                          <li key={i}>
-                            <a
-                              href={resource.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="usa-link"
-                            >
-                              {resource.title}
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
                 </div>
               )}
             </>

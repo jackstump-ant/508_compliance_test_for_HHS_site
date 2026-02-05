@@ -44,12 +44,59 @@ interface GuidanceResponse {
 }
 
 function parseJsonResponse<T>(text: string): T {
-  // Try to extract JSON from the response
-  const jsonMatch = text.match(/\{[\s\S]*\}/);
-  if (!jsonMatch) {
+  // Try to extract JSON from markdown code blocks first
+  const codeBlockMatch = text.match(/```(?:json)?\s*\n?([\s\S]*?)\n?```/);
+  if (codeBlockMatch) {
+    try {
+      return JSON.parse(codeBlockMatch[1].trim()) as T;
+    } catch {
+      // Fall through to brace matching
+    }
+  }
+
+  // Fall back to finding a top-level JSON object by matching braces
+  const start = text.indexOf('{');
+  if (start === -1) {
+    console.error('parseJsonResponse: no { found. Response preview:', text.slice(0, 500));
     throw new Error('No JSON found in response');
   }
-  return JSON.parse(jsonMatch[0]) as T;
+
+  let depth = 0;
+  let inString = false;
+  let escape = false;
+  for (let i = start; i < text.length; i++) {
+    const ch = text[i];
+    if (escape) {
+      escape = false;
+      continue;
+    }
+    if (ch === '\\' && inString) {
+      escape = true;
+      continue;
+    }
+    if (ch === '"') {
+      inString = !inString;
+      continue;
+    }
+    if (inString) continue;
+    if (ch === '{') depth++;
+    else if (ch === '}') {
+      depth--;
+      if (depth === 0) {
+        const jsonStr = text.slice(start, i + 1);
+        try {
+          return JSON.parse(jsonStr) as T;
+        } catch (e) {
+          console.error('parseJsonResponse: JSON.parse failed at position', i, '- error:', e);
+          console.error('parseJsonResponse: JSON preview (last 200 chars):', jsonStr.slice(-200));
+          throw e;
+        }
+      }
+    }
+  }
+
+  console.error('parseJsonResponse: unbalanced braces. Response length:', text.length, 'preview:', text.slice(0, 500));
+  throw new Error('No valid JSON object found in response');
 }
 
 export async function evaluatePolicy(
@@ -104,10 +151,14 @@ export async function generateGuidance(
 
   const response = await anthropic.messages.create({
     model: MODEL,
-    max_tokens: 4096,
+    max_tokens: 8192,
     system: GUIDANCE_GENERATION_PROMPT,
     messages,
   });
+
+  if (response.stop_reason !== 'end_turn') {
+    console.error('generateGuidance: unexpected stop_reason:', response.stop_reason);
+  }
 
   const textContent = response.content.find(block => block.type === 'text');
   if (!textContent || textContent.type !== 'text') {

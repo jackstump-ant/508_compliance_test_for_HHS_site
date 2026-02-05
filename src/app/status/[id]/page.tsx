@@ -226,10 +226,10 @@ export default function StatusPage() {
 
           {submission.status === 'completed' && (
             <Alert type="success" headingLevel="h4" heading="Analysis Complete">
-              <p>
+              <span>
                 Your document has been analyzed. View the detailed results to see
                 any accessibility issues found and guidance on how to fix them.
-              </p>
+              </span>
               <Button
                 type="button"
                 onClick={() => router.push(`/results/${id}`)}
@@ -242,11 +242,11 @@ export default function StatusPage() {
 
           {submission.status === 'failed' && (
             <Alert type="error" headingLevel="h4" heading="Analysis Failed">
-              <p>
+              <span>
                 We encountered an error while analyzing your document.
                 This could be due to an unsupported file format or a temporary issue.
-              </p>
-              <div className="margin-top-2">
+              </span>
+              <span className="display-block margin-top-2">
                 <Button
                   type="button"
                   onClick={() => {
@@ -260,7 +260,7 @@ export default function StatusPage() {
                 <Link href="/upload" className="usa-button usa-button--outline">
                   Upload Different File
                 </Link>
-              </div>
+              </span>
             </Alert>
           )}
         </div>
